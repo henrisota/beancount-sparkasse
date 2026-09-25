@@ -1,0 +1,19 @@
+;; Account: Assets:Bank:Checking
+;; Date: 2025-03-12
+;; Name: sparkasse.0001.csv
+
+2025-03-03 ! "Muster Versicherung AG" "Rückzahlung"
+  value-date: 2025-03-03
+  booking-text: "GUTSCHRIFT"
+  counterparty-iban: "DE06123456780000000005"
+  Assets:Bank:Checking  249.9 EUR
+
+2025-03-12 ! "Stadtwerke Musterstadt" "Stromabschlag März"
+  value-date: 2025-03-12
+  booking-text: "LASTSCHRIFT"
+  creditor-id: "DE98ZZZ09999999999"
+  mandate-reference: "M-2024-0042"
+  customer-reference: "E2E-8891"
+  category: "Wohnen & Energie"
+  counterparty-iban: "DE33123456780000000004"
+  Assets:Bank:Checking  -68.00 EUR

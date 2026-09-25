@@ -1,0 +1,24 @@
+;; Account: Assets:Bank:Checking
+;; Date: 2026-03-12
+;; Name: sparkasse.0001.csv
+
+2026-01-28 ! "Arbeitgeber GmbH" "Gehalt Januar 2026"
+  value-date: 2026-01-28
+  booking-text: "LOHN GEHALT"
+  counterparty-iban: "DE60123456780000000003"
+  Assets:Bank:Checking  2500.50 EUR
+
+2026-02-15 ! "Supermarkt GmbH" "SUPERMARKT SAGT DANKE 1234567"
+  value-date: 2026-02-15
+  booking-text: "KARTENZAHLUNG"
+  counterparty-iban: "DE87123456780000000002"
+  Assets:Bank:Checking  -42.17 EUR
+
+2026-03-12 ! "Stadtwerke Musterstadt" "Stromabschlag März"
+  value-date: 2026-03-12
+  booking-text: "LASTSCHRIFT"
+  creditor-id: "DE98ZZZ09999999999"
+  mandate-reference: "M-2024-0042"
+  customer-reference: "E2E-8891"
+  counterparty-iban: "DE33123456780000000004"
+  Assets:Bank:Checking  -68 EUR

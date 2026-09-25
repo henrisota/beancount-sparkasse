@@ -1,0 +1,4 @@
+"Auftragskonto";"Buchungstag";"Valutadatum";"Buchungstext";"Verwendungszweck";"Glaeubiger ID";"Mandatsreferenz";"Kundenreferenz (End-to-End)";"Sammlerreferenz";"Lastschrift Ursprungsbetrag";"Auslagenersatz Ruecklastschrift";"Beguenstigter/Zahlungspflichtiger";"Kontonummer/IBAN";"BIC (SWIFT-Code)";"Betrag";"Waehrung";"Info";"Kategorie"
+"DE17123456780000000001";"12.03.25";"12.03.25";"LASTSCHRIFT";"Stromabschlag März";"DE98ZZZ09999999999";"M-2024-0042";"E2E-8891";"";"";"";"Stadtwerke Musterstadt";"DE33123456780000000004";"TESTDEFFXXX";"-68,00";"EUR";"Umsatz gebucht";"Wohnen & Energie"
+"DE17123456780000000001";"03.03.25";"03.03.25";"GUTSCHRIFT";"Rückzahlung";"";"";"";"";"";"";"Muster Versicherung AG";"DE06123456780000000005";"TESTDEFFXXX";"249,9";"EUR";"Umsatz gebucht";""
+"DE87123456780000000099";"05.03.25";"05.03.25";"KARTENZAHLUNG";"Other account";"";"";"";"";"";"";"Someone";"DE06123456780000000005";"TESTDEFFXXX";"-10,00";"EUR";"Umsatz gebucht";"Sonstiges"
