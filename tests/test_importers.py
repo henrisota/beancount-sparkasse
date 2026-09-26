@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from beangulp import testing
 
-from beancount_sparkasse import AccountImporter
+from beancount_sparkasse import AccountImporter, CreditCardImporter
 from beancount_sparkasse._csv import parse_amount, parse_date
 
 DATA = Path(__file__).parent / "data"
@@ -16,10 +16,15 @@ ACCOUNT = AccountImporter(
 OTHER_ACCOUNT = AccountImporter(
     iban="DE11 1111 1111 1111 1111 11", account="Assets:Bank:Checking"
 )
+CARD = CreditCardImporter(card="4111 **** **** 1111", account="Liabilities:CreditCard")
+OTHER_CARD = CreditCardImporter(
+    card="4000 **** **** 9999", account="Liabilities:CreditCard"
+)
 
 IMPORTERS = {
     "camt.csv": ACCOUNT,
     "filtered.csv": ACCOUNT,
+    "card.csv": CARD,
 }
 
 
@@ -44,8 +49,12 @@ def test_parse_date(value: str) -> None:
 @pytest.mark.parametrize(
     ("importer", "document"),
     [
+        (ACCOUNT, "card.csv"),
         (ACCOUNT, "empty.csv"),
         (OTHER_ACCOUNT, "camt.csv"),
+        (CARD, "camt.csv"),
+        (CARD, "empty.csv"),
+        (OTHER_CARD, "card.csv"),
     ],
 )
 def test_identify_rejects(importer, document: str) -> None:

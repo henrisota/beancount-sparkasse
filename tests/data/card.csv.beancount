@@ -1,0 +1,26 @@
+;; Account: Liabilities:CreditCard
+;; Date: 2026-03-11
+;; Name: sparkasse.card.1111.csv
+
+2026-03-03 ! "Streaming Service Premium"
+  receipt-date: 2026-03-02
+  reference: "REF003"
+  country: "DE"
+  merchant-category: "5815"
+  Liabilities:CreditCard  -9.99 EUR
+
+2026-03-10 ! "CITY MUSEUM"
+  receipt-date: 2026-03-08
+  reference: "REF002"
+  country: "US"
+  merchant-category: "7991"
+  original-amount: "-25.00 USD"
+  exchange-rate: "1,15"
+  Liabilities:CreditCard  -21.74 EUR
+
+2026-03-11 ! "HOTEL AM MARKT"
+  receipt-date: 2026-03-10
+  reference: "REF001"
+  country: "DE"
+  merchant-category: "7011"
+  Liabilities:CreditCard  -120.00 EUR

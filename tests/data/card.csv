@@ -1,0 +1,6 @@
+Umsatz getätigt von;Belegdatum;Buchungsdatum;Originalbetrag;Originalwährung;Umrechnungskurs;Buchungsbetrag;Buchungswährung;Transaktionsbeschreibung;Transaktionsbeschreibung Zusatz;Buchungsreferenz;Gebührenschlüssel;Länderkennzeichen;BAR-Entgelt+Buchungsreferenz;AEE+Buchungsreferenz;Abrechnungskennzeichen
+4111 **** **** 1111;10.03.26;11.03.26;0,00;;1,00;-120,00;EUR;HOTEL AM MARKT;;REF001;7011;DE;;;
+4111 **** **** 1111;08.03.26;10.03.26;-25,00;USD;1,15;-21,74;EUR;CITY MUSEUM;;REF002;7991;US;;;
+4111 **** **** 1111;02.03.26;03.03.26;0,00;;1,00;-9,99;EUR;Streaming Service;Premium;REF003;5815;DE;;;
+5500 **** **** 0004;05.03.26;06.03.26;0,00;;1,00;-5,00;EUR;Other card;;REF005;5411;DE;;;
+4111 **** **** 1111;07.03.26;07.03.26;0,00;;1,00;500,00;EUR;Lastschrift;;REF004;;;;;
