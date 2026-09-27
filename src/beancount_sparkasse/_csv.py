@@ -1,5 +1,6 @@
 import csv
 import datetime
+import time
 from decimal import Decimal
 
 from beancount.core import flags
@@ -21,7 +22,14 @@ class Importer(csvbase.Importer):
     def identify(self, filepath: str) -> bool:
         try:
             return any(self.read(filepath))
-        except OSError, UnicodeDecodeError, csv.Error, IndexError, KeyError, ValueError:
+        except (
+            OSError,
+            UnicodeDecodeError,
+            csv.Error,
+            IndexError,
+            KeyError,
+            ValueError,
+        ):
             return False
 
     def filename(self, filepath: str) -> str:
@@ -66,7 +74,7 @@ class Iban(Text):
 def parse_date(value: str) -> datetime.date:
     for fmt in ("%d.%m.%y", "%d.%m.%Y"):
         try:
-            return datetime.date.strptime(value.strip(), fmt)
+            return datetime.date(*time.strptime(value.strip(), fmt)[:3])
         except ValueError:
             continue
     raise ValueError(f"unrecognized date: {value!r}")

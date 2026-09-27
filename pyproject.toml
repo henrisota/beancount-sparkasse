@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Beancount v3 importers for Sparkasse CSV exports"
 readme = "README.md"
 authors = [{ name = "Henri Sota", email = "sotahenry@gmail.com" }]
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
 dependencies = [
