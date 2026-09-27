@@ -23,5 +23,6 @@ if __name__ == "__main__":
 ## Development
 
 ```
+uv run prek install --hook-type pre-commit --hook-type pre-push
 uv run pytest
 ```

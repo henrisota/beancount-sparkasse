@@ -1,0 +1,60 @@
+# CI runs the manual stage
+default_stages: [pre-commit, manual]
+
+repos:
+  - repo: builtin
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^tests/data/
+        stages: [pre-commit, manual]
+      - id: end-of-file-fixer
+        exclude: ^tests/data/
+        stages: [pre-commit, manual]
+      - id: mixed-line-ending
+        exclude: ^tests/data/
+        stages: [pre-commit, manual]
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+      - id: detect-private-key
+  # --locked stops uv rewriting uv.lock
+  - repo: local
+    hooks:
+      - id: uv-lock
+        name: uv lock
+        entry: uv lock --check
+        language: system
+        files: ^(pyproject\.toml|uv\.lock)$
+        pass_filenames: false
+      - id: ruff-check
+        name: ruff check
+        entry: uv run --locked ruff check --fix
+        language: system
+        files: (\.py|^pyproject\.toml)$
+        pass_filenames: false
+      - id: ruff-format
+        name: ruff format
+        entry: uv run --locked ruff format
+        language: system
+        files: (\.py|^pyproject\.toml)$
+        pass_filenames: false
+      - id: ty
+        name: ty check
+        entry: uv run --locked ty check
+        language: system
+        files: (\.py|^pyproject\.toml)$
+        pass_filenames: false
+      - id: zizmor
+        name: zizmor
+        entry: uv run --locked zizmor
+        language: system
+        files: ^\.github/
+      - id: pytest
+        name: pytest
+        entry: uv run --locked pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push, manual]

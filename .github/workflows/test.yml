@@ -27,18 +27,10 @@ jobs:
           enable-cache: true
       - name: Install dependencies
         run: uv sync --locked
-      - name: Lint
-        run: uv run ruff check
-      - name: Check formatting
-        run: uv run ruff format --check
-      - name: Check types
-        run: uv run ty check
-      - name: Audit workflows
-        run: uv run zizmor .github
+      - name: Run checks
+        run: uv run prek run --all-files --stage manual --show-diff-on-failure
         env:
           GH_TOKEN: ${{ github.token }}
-      - name: Run tests
-        run: uv run pytest
 
   test-oldest:
     name: Test oldest dependencies
