@@ -1,6 +1,9 @@
 [project]
 name = "beancount-sparkasse"
 version = "0.1.0"
+description = "Beancount v3 importers for Sparkasse CSV exports"
+readme = "README.md"
+authors = [{ name = "Henri Sota", email = "sotahenry@gmail.com" }]
 requires-python = ">=3.14"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -8,6 +11,14 @@ dependencies = [
   "beancount>=3",
   "beangulp>=0.2",
 ]
+keywords = ["beancount", "beangulp", "sparkasse"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Office/Business :: Financial :: Accounting",
+]
+
+[project.urls]
+Repository = "https://github.com/henrisota/beancount-sparkasse"
 
 [dependency-groups]
 dev = [
