@@ -22,6 +22,7 @@ class AccountImporter(Importer):
     mandate_reference = Text("Mandatsreferenz")
     customer_reference = Text("Kundenreferenz (End-to-End)", "Kundenreferenz")
     category = Text("Kategorie")
+    status = Text("Info")
 
     def __init__(self, iban: str, account: str, flag: str = flags.FLAG_WARNING) -> None:
         super().__init__(account, flag)
@@ -32,7 +33,12 @@ class AccountImporter(Importer):
         return f"sparkasse.{self.iban[-4:]}"
 
     def read(self, filepath: str):
-        return (row for row in super().read(filepath) if row.own_iban == self.iban)
+        # Pending rows can change once booked, escaping deduplication.
+        return (
+            row
+            for row in super().read(filepath)
+            if row.own_iban == self.iban and row.status != "Umsatz vorgemerkt"
+        )
 
     def metadata(self, filepath, lineno, row):
         meta = super().metadata(filepath, lineno, row)
