@@ -35,9 +35,18 @@ class CreditCardImporter(Importer):
     country = Text("Länderkennzeichen")
     merchant_category = Text("Gebührenschlüssel")
 
-    def __init__(self, card: str, account: str, flag: str = flags.FLAG_WARNING) -> None:
+    # ignore_settlements skips the card's record of the direct debit that pays
+    # it, for ledgers that book the settlement from the account it is paid from.
+    def __init__(
+        self,
+        card: str,
+        account: str,
+        flag: str = flags.FLAG_WARNING,
+        ignore_settlements: bool = False,
+    ) -> None:
         super().__init__(account, flag)
         self.card = _digits(card)
+        self.ignore_settlements = ignore_settlements
 
     @property
     def name(self) -> str:
@@ -61,3 +70,8 @@ class CreditCardImporter(Importer):
             if row.exchange_rate:
                 meta["exchange-rate"] = row.exchange_rate
         return meta
+
+    def finalize(self, txn, row):
+        if self.ignore_settlements and row.description.lower() == "lastschrift":
+            return None
+        return txn

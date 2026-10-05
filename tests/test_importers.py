@@ -3,6 +3,7 @@ from decimal import Decimal
 from pathlib import Path
 
 import pytest
+from beancount.core import data
 from beangulp import testing
 
 from beancount_sparkasse import AccountImporter, CreditCardImporter
@@ -68,3 +69,17 @@ def test_extract(document: str) -> None:
     assert importer.identify(path)
     expected = f"{path}.beancount"
     assert not testing.compare_expected(expected, *testing.run_importer(importer, path))
+
+
+def test_ignore_settlements() -> None:
+    importer = CreditCardImporter(
+        card="4111 **** **** 1111",
+        account="Liabilities:CreditCard",
+        ignore_settlements=True,
+    )
+    _, _, _, entries = testing.run_importer(importer, str(DATA / "card.csv"))
+    assert [e.narration for e in entries if isinstance(e, data.Transaction)] == [
+        "Streaming Service Premium",
+        "CITY MUSEUM",
+        "HOTEL AM MARKT",
+    ]

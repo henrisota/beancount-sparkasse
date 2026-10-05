@@ -7,6 +7,10 @@ banking exports, built on [beangulp](https://github.com/beancount/beangulp).
   **CSV - gefilterte Einträge**.
 - `CreditCardImporter` reads the credit card export.
 
+The card export also lists the direct debit that settles each statement. A
+ledger that books the settlement from the account it is paid from would count
+it twice; `CreditCardImporter(..., ignore_settlements=True)` skips it.
+
 ```python
 import beangulp
 from beancount_sparkasse import AccountImporter, CreditCardImporter
