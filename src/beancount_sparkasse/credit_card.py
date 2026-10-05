@@ -61,6 +61,3 @@ class CreditCardImporter(Importer):
             if row.exchange_rate:
                 meta["exchange-rate"] = row.exchange_rate
         return meta
-
-    def finalize(self, txn, row):
-        return None if "lastschrift" in row.description.lower() else txn

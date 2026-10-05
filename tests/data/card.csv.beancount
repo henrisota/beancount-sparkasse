@@ -9,6 +9,11 @@
   merchant-category: "5815"
   Liabilities:CreditCard  -9.99 EUR
 
+2026-03-07 ! "Lastschrift"
+  receipt-date: 2026-03-07
+  reference: "REF004"
+  Liabilities:CreditCard  500.00 EUR
+
 2026-03-10 ! "CITY MUSEUM"
   receipt-date: 2026-03-08
   reference: "REF002"
