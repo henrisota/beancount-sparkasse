@@ -61,10 +61,15 @@ AccountStatementImporter(
 
 ## Development
 
+With Nix and direnv, `direnv allow` enters a shell with uv and Python, synced
+dependencies and the hooks installed; `nix develop` does the same without
+direnv. Without Nix:
+
 ```
 uv run prek install --hook-type pre-commit --hook-type pre-push
-uv run pytest
 ```
+
+Then `uv run pytest`, or `pytest` inside the Nix shell.
 
 ## Releasing
 
