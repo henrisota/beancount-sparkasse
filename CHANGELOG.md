@@ -8,6 +8,14 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-08
+
+### Changed
+
+- **Breaking:** `CreditCardImporter` keeps the direct debit that settles the
+  card, which it used to drop. Pass `ignore_settlements=True` to keep dropping
+  it.
+
 ### Added
 
 - `AccountStatementImporter` reads the monthly Kontoauszug PDF into a balance
@@ -18,12 +26,6 @@ and this project adheres to
 - Docstrings and type annotations on the importers.
 - Changelog and issue tracker links in the project metadata.
 - The changelog and the tests in the source distribution.
-
-### Changed
-
-- **Breaking:** `CreditCardImporter` keeps the direct debit that settles the
-  card, which it used to drop. Pass `ignore_settlements=True` to keep dropping
-  it.
 
 ### Fixed
 
@@ -37,5 +39,6 @@ and this project adheres to
 - `AccountImporter` for the CSV-CAMT and filtered CSV account exports.
 - `CreditCardImporter` for the credit card CSV export.
 
-[Unreleased]: https://github.com/henrisota/beancount-sparkasse/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/henrisota/beancount-sparkasse/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/henrisota/beancount-sparkasse/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/henrisota/beancount-sparkasse/releases/tag/v0.1.0
