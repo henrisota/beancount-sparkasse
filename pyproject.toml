@@ -1,7 +1,7 @@
 [project]
 name = "beancount-sparkasse"
 version = "0.1.0"
-description = "Beancount v3 importers for Sparkasse CSV exports"
+description = "Beancount v3 importers for Sparkasse exports and statements"
 readme = "README.md"
 authors = [{ name = "Henri Sota", email = "sotahenry@gmail.com" }]
 requires-python = ">=3.10"
@@ -10,6 +10,7 @@ license-files = ["LICENSE"]
 dependencies = [
   "beancount>=3",
   "beangulp>=0.2",
+  "pypdf[crypto]>=4",
 ]
 keywords = ["beancount", "beangulp", "sparkasse"]
 classifiers = [
@@ -22,6 +23,7 @@ Repository = "https://github.com/henrisota/beancount-sparkasse"
 
 [dependency-groups]
 dev = [
+  "fpdf2>=2.8.9",
   "prek>=0.5.3",
   "pytest>=9",
   "ruff>=0.16",
