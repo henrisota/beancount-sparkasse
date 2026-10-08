@@ -65,3 +65,20 @@ AccountStatementImporter(
 uv run prek install --hook-type pre-commit --hook-type pre-push
 uv run pytest
 ```
+
+## Releasing
+
+Pushing a `v*` tag publishes to PyPI with attestations and creates the GitHub
+release, its notes taken from the version's section of `CHANGELOG.md`. The
+release fails before publishing if `pyproject.toml` disagrees with the tag or
+the changelog has no section for it, and waits for approval of the `pypi`
+environment.
+
+```
+uv version --bump minor
+# Rename CHANGELOG.md's Unreleased section to the new version and update the
+# compare links at the bottom.
+git commit -am "Release 0.2.0"
+git tag -a v0.2.0 -m v0.2.0
+git push origin main v0.2.0
+```
