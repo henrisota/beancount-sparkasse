@@ -34,7 +34,10 @@ jobs:
           awk -v heading="## [${GITHUB_REF_NAME#v}]" '
             /^## \[/ { if (found) exit; found = index($0, heading) == 1; next }
             /^\[[^]]+\]: / { next }
-            found
+            # Blank lines are held back until text follows them, so the
+            # notes neither open nor close on one.
+            found && !NF { blanks++; next }
+            found { if (printed) while (blanks--) print ""; blanks = 0; printed = 1; print }
           ' CHANGELOG.md > notes.md
           if ! grep -q '[^[:space:]]' notes.md; then
             echo "::error::CHANGELOG.md has no section for ${GITHUB_REF_NAME#v}"
