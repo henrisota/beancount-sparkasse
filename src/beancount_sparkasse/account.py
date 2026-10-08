@@ -1,9 +1,20 @@
-from beancount.core import flags
+from collections.abc import Iterator
+from typing import Any
+
+from beancount.core import data, flags
 
 from ._csv import Amount, Date, Iban, Importer, Text, normalize_iban
 
 
 class AccountImporter(Importer):
+    """The account's CSV-CAMT or filtered CSV export, one transaction per row.
+
+    Args:
+        iban: The account's IBAN, with or without spaces.
+        account: The account the transactions are booked to.
+        flag: The flag extracted transactions carry.
+    """
+
     own_iban = Iban("Auftragskonto", required=True)
     date = Date("Buchungstag", required=True)
     amount = Amount("Betrag", required=True)
@@ -32,7 +43,7 @@ class AccountImporter(Importer):
     def name(self) -> str:
         return f"sparkasse.{self.iban[-4:]}"
 
-    def read(self, filepath: str):
+    def read(self, filepath: str) -> Iterator[Any]:
         # Pending rows can change once booked, escaping deduplication.
         return (
             row
@@ -40,7 +51,7 @@ class AccountImporter(Importer):
             if row.own_iban == self.iban and row.status != "Umsatz vorgemerkt"
         )
 
-    def metadata(self, filepath, lineno, row):
+    def metadata(self, filepath: str, lineno: int, row: Any) -> data.Meta:
         meta = super().metadata(filepath, lineno, row)
         for key in (
             "value_date",
