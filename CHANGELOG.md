@@ -16,6 +16,8 @@ and this project adheres to
 - `CreditCardImporter(..., ignore_settlements=True)` skips the direct debit
   that settles the card, for ledgers that book it from the paying account.
 - Docstrings and type annotations on the importers.
+- Changelog and issue tracker links in the project metadata.
+- The changelog and the tests in the source distribution.
 
 ### Changed
 
